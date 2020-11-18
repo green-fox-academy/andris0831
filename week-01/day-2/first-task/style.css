@@ -1,0 +1,86 @@
+header {
+    background-color: gray;
+    border: solid;
+    border-width: 2px;
+}
+
+header h1 {
+    margin-left: 10%;
+}
+
+div p {
+    font-style: normal;
+    margin-left: 10%;
+    margin-top: 5px;
+    font-size: 20px;
+    
+}
+
+.title h4 {
+    margin-left: 10%;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.first-input input {
+    margin-left: 10%;
+    width: 10%;
+}
+
+.second-input input {
+    margin-left: 10%;
+    width: 70%;
+    height: 50px;
+}
+
+.second-input h4 {
+    margin-left: 10%;
+    margin-bottom: 1px;
+}
+
+.second-input p {
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+.submit a {
+    margin-left: 10%;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+    padding: 2px 30px 2px 30px;
+    text-decoration: black;
+    font-size: 20px;
+    background-color: lightgray;
+    color: black;
+}
+
+.forthp p {
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+.lorem1 {
+    border: solid;
+    border-width: 2px;
+    margin-left: 10%;
+    padding-left: 4px;
+    padding-top: 4px;
+    margin-bottom: 10px;
+}
+
+.lorem2 {
+    border: solid;
+    border-width: 2px;
+    margin-left: 10%;
+    padding-left: 4px;
+    padding-top: 4px;
+}
+
+
+
+
+
+

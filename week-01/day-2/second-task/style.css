@@ -1,0 +1,11 @@
+.image {
+    position: absolute;
+}
+
+.bottom-center {
+    position: absolute;
+    bottom: 8px;
+    left: 30%;
+    font-size: 40px;
+}
+
