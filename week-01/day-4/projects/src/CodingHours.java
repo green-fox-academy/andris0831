@@ -13,7 +13,7 @@ public class CodingHours {
         int f = 168;
 
         System.out.println("Hours " + "spent " + "with " + "coding: " + ((a * b * c)) );
-        System.out.println("Percentage" + " of" + " coding" + " hours: " + ((b * f) / (b * d)) + "%");
+        System.out.println("Percentage" + " of" + " coding" + " hours: " + (((a * b * c) / (b * d)) * 100) + "%");
 
     }
 }
