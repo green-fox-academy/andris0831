@@ -11,7 +11,7 @@ public class MileToKilometer {
 
         userInput1 = scanner.nextDouble();
         double result = (userInput1 * changeNumber);
-        System.out.println("The distance in kilometers is: " + result);
+        System.out.println("The distance in kilometers is: " + result + "km");
 
     }
 }
