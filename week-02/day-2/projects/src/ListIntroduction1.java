@@ -24,5 +24,9 @@ public class ListIntroduction1 {
         for (int i = names.size() - 1; i >= 0; i--) {
             System.out.println(names.get(i));
         }
+
+        names.clear();
+
+        System.out.println(names);
     }
 }
