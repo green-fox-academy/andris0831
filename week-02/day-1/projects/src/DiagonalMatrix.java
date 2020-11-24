@@ -14,7 +14,20 @@ public class DiagonalMatrix {
     // ** Relax, a matrix is just like an array
 
     public static void main(String[] args) {
+        int x = 4;
+        int[][] matrix = new int[x][x];
 
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (i == j) {
+                    System.out.println(1);
+                } else {
+                    System.out.println(0);
+                }
+            }
+
+        }
+        System.out.println(matrix[x][x]);
     }
 }
 

@@ -8,5 +8,10 @@ public class Colors {
 // - In `colors[2]` store the shades of pink:
 //   `"orchid", "violet", "pink", "hot pink"`
 
+    public static void main(String[] args) {
+        int[][] colors = new int[4][];
 
+    }
 }
+
+
