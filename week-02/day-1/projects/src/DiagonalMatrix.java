@@ -27,7 +27,7 @@ public class DiagonalMatrix {
             }
 
         }
-        System.out.println(matrix[x][x]);
+        System.out.println(Arrays.deepToString(matrix));
     }
 }
 
