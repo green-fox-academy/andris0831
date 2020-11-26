@@ -4,13 +4,24 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class CenteredSquare {
+public class CenterBoxFunction {
 
-    public static void mainDraw(Graphics graphics) {
-        // Draw a green 10x10 square to the canvas' center.
+    public static void square(int x, Graphics graphics) {
+        graphics.drawRect(WIDTH / 2 - x / 2, HEIGHT / 2 - x / 2, x, x);
 
-        graphics.setColor(Color.GREEN);
-        graphics.drawRect(155,155,10, 10);
+    }
+
+    public static void mainDraw(Graphics graphics){
+        // create a function that draws one square and takes 2 parameters:
+        // the square size and the graphics
+        // and draws a square of that size to the center of the canvas.
+        // draw 3 squares with that function.
+        // avoid code duplication.
+
+        for (int i = 0; i < 3; i++) {
+            square((i * 10) + 60, graphics);
+        }
+
     }
 
     // Don't touch the code below
@@ -36,3 +47,4 @@ public class CenteredSquare {
         }
     }
 }
+

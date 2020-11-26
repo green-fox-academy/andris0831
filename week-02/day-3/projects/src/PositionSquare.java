@@ -4,13 +4,24 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class CenteredSquare {
+public class PositionSquare {
 
-    public static void mainDraw(Graphics graphics) {
-        // Draw a green 10x10 square to the canvas' center.
+    public static void rectangle(int xCor, int yCor, Graphics graphics) {
+        graphics.drawRect(xCor, yCor, 50, 50);
+    }
 
-        graphics.setColor(Color.GREEN);
-        graphics.drawRect(155,155,10, 10);
+    public static void mainDraw(Graphics graphics){
+        // create a function that draws one square and takes 3 parameters:
+        // the x and y coordinates of the square's top left corner and the graphics
+        // and draws a 50x50 square from that point.
+        // draw 3 squares with that function.
+        // avoid code duplication.
+
+        for (int i = 0; i < 3; i++) {
+            rectangle((i * 5) + 10, (i * 30) + 50, graphics);
+        }
+
+
     }
 
     // Don't touch the code below
@@ -35,4 +46,5 @@ public class CenteredSquare {
             mainDraw(graphics);
         }
     }
+
 }
