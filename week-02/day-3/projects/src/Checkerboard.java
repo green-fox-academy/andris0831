@@ -4,19 +4,13 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class SquareSequence {
+public class Checkerboard {
     public static void mainDraw(Graphics graphics) {
+        // Fill the canvas with a checkerboard pattern.
 
-
-        graphics.setColor(new Color(148,0,211));
-
-        int width = 10;
-        int height = 10;
-
-        for (int i = 0; i < 30; i++) {
-            graphics.fillRect(i * width, i * height, width, height);
-        }
     }
+
+
 
     // Don't touch the code below
     static int WIDTH = 320;
@@ -41,4 +35,3 @@ public class SquareSequence {
         }
     }
 }
-

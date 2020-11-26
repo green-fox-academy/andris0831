@@ -4,17 +4,21 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class SquareSequence {
+public class BiggerSquares {
     public static void mainDraw(Graphics graphics) {
 
 
         graphics.setColor(new Color(148,0,211));
 
-        int width = 10;
-        int height = 10;
+        int size = 10;
+        int x = 0;
+        int y = 0;
 
-        for (int i = 0; i < 30; i++) {
-            graphics.fillRect(i * width, i * height, width, height);
+        for (int i = 0; i < 7; i++) {
+            x += size;
+            y += size;
+            size *= 2;
+            graphics.fillRect(size, size, size, size);
         }
     }
 
@@ -41,4 +45,3 @@ public class SquareSequence {
         }
     }
 }
-
