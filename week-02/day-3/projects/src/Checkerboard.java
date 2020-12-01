@@ -7,34 +7,25 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Checkerboard {
 
 
-    // Use paint() method
-    public static void cheker(Graphics graphics)
-    {
-        int N = 10;
+
+    public static void checker(Graphics graphics) {
+        int sizeOfBoard = 8;
         int x, y;
-        for (int row = 0; row < N; row++) {
+        for (int row = 0; row < sizeOfBoard; row++) {
 
-            for (int col = 0; col < N; col++) {
+            for (int col = 0; col < sizeOfBoard; col++) {
 
-                // Set x coordinates of rectangle
-                // by 20 times
-                x = row * 20;
+                x = row * 40;
 
-                // Set y coordinates of rectangle
-                // by 20 times
-                y = col * 20;
+                y = col * 40;
 
-                // Check whether row and column
-                // are in even position
-                // If it is true set Black color
                 if ((row % 2 == 0) == (col % 2 == 0))
                     graphics.setColor(Color.BLACK);
                 else
                     graphics.setColor(Color.WHITE);
 
-                // Create a rectangle with
-                // length and breadth of 20
-                graphics.fillRect(x, y, 20, 20);
+
+                graphics.fillRect(x, y, 40, 40);
             }
         }
     }
@@ -42,7 +33,7 @@ public class Checkerboard {
     public static void mainDraw(Graphics graphics) {
         // Fill the canvas with a checkerboard pattern.
 
-        cheker(graphics);
+        checker(graphics);
 
     }
 
