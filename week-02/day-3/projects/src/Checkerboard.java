@@ -5,38 +5,46 @@ import java.awt.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Checkerboard {
-        public static void checkers(Graphics graphics) {
-            int x = 0;
-            int y = 0;
-            int size = 10;
-            boolean blue = true;
-            int width = 40;
-            int height = 40;
 
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
-                    x += 40;
-                    if (blue == true) {
-                        graphics.setColor(Color.BLUE);
-                    } else {
-                        graphics.setColor(Color.BLACK);
-                    }
-                    graphics.fillRect(x, y, width, height);
-                    blue = !blue;
-                }
-                blue = !blue;
-                x = 0;
-                y += 40;
+
+    // Use paint() method
+    public static void cheker(Graphics graphics)
+    {
+        int N = 10;
+        int x, y;
+        for (int row = 0; row < N; row++) {
+
+            for (int col = 0; col < N; col++) {
+
+                // Set x coordinates of rectangle
+                // by 20 times
+                x = row * 20;
+
+                // Set y coordinates of rectangle
+                // by 20 times
+                y = col * 20;
+
+                // Check whether row and column
+                // are in even position
+                // If it is true set Black color
+                if ((row % 2 == 0) == (col % 2 == 0))
+                    graphics.setColor(Color.BLACK);
+                else
+                    graphics.setColor(Color.WHITE);
+
+                // Create a rectangle with
+                // length and breadth of 20
+                graphics.fillRect(x, y, 20, 20);
             }
         }
+    }
+
     public static void mainDraw(Graphics graphics) {
         // Fill the canvas with a checkerboard pattern.
 
-        checkers(graphics);
+        cheker(graphics);
 
     }
-
-
 
     // Don't touch the code below
     static int WIDTH = 320;

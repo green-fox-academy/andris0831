@@ -33,8 +33,9 @@ public class RainbowBoxFunction {
     colors.add(VIOLET);
 
     for (int i = 0; i < 7; i++) {
-        rainbowSquare(100 - (i * (100 / 5)), (colors.get(i)), graphics);
+        rainbowSquare(320 - (i * (100 / 5)), (colors.get(i)), graphics);
     }
+
     }
 
     // Don't touch the code below
