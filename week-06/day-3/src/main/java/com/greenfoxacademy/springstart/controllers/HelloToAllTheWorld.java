@@ -20,6 +20,6 @@ public class HelloToAllTheWorld {
     @RequestMapping(value = "/world")
     public Greeting helloToAllTheWorld(Model model) {
        Random random = new Random();
-       
+
     }
 }
