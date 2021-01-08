@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Basic Webshop</title>
     <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
 </head>
 <body>
 <header>
@@ -23,19 +23,10 @@
     <button id="search-button" >Search</button>
 </div>
 <table>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Quantity of stock</th>
-    </tr>
-    <tr th:each="items: ${itemsList}">
-        <td th:text="${items.name}"/>
-        <td th:text="${items.description}"/>
-        <td class ="centered" th:text="${items.price}"/>
-        <td class ="centered" th:text="${items.quantityOfStock}"/>
+    <tr id="average">
+        <th>Average stock: </th>
+        <td th:text="${itemsList}"/>
     </tr>
 </table>
-<div><p th:text="${noItemMessage}"></p></div>
 </body>
 </html>

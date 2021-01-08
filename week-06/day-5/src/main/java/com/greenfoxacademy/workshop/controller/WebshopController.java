@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class WebshopController {
@@ -25,5 +27,62 @@ public class WebshopController {
         return "index";
     }
 
+    @GetMapping("/only-available")
+    public String onlyAvailable(Model model) {
+        List<ShopItem> availableItems = shopItems
+                .stream()
+                .filter(s -> s.getQuantityOfStock() != 0)
+                .collect(Collectors.toList());
+        model.addAttribute("itemsList", availableItems);
+        return "index";
+    }
+
+    @GetMapping("/cheapest-first")
+    public String cheapestFirst(Model model) {
+        List<ShopItem> cheapestFirst = shopItems
+                .stream()
+                .sorted(Comparator.comparing(ShopItem::getPrice))
+                .collect(Collectors.toList());
+        model.addAttribute("itemsList", cheapestFirst);
+        return "index";
+    }
+
+    @GetMapping("/contains-nike")
+    public String containsNike(Model model) {
+        List<ShopItem> containsNike = shopItems
+                .stream()
+                .filter(s -> s.getDescription()
+                        .toLowerCase()
+                        .contains("nike"))
+                .collect(Collectors.toList());
+        model.addAttribute("itemsList", containsNike);
+        if (containsNike.isEmpty()) {
+            model.addAttribute("noItemMessage", "No Nike found");
+        } else {
+            model.addAttribute("noItemMessage", "");
+        }
+        return "index";
+    }
+
+    @GetMapping("/average-stock")
+    public String averageStock(Model model) {
+        Double averageStock = shopItems
+                .stream()
+                .mapToDouble(ShopItem::getQuantityOfStock)
+                .average()
+                .orElse(0);
+        model.addAttribute("itemsList", averageStock);
+        return "average-stock";
+    }
+
+    @GetMapping("/most-expensive-available")
+    public String mostExpensiveAvailable(Model model) {
+        List<ShopItem> mostExpensiveItem = new ArrayList();
+        mostExpensiveItem.add(shopItems.stream()
+                .max(Comparator.comparingDouble(ShopItem::getPrice))
+                .get());
+        model.addAttribute("itemsList", mostExpensiveItem);
+        return "index";
+    }
 
 }
