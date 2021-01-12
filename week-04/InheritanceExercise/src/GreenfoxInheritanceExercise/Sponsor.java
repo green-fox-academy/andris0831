@@ -2,16 +2,15 @@ package GreenfoxInheritanceExercise;
 
 public class Sponsor extends Person {
     private String company;
-    private Integer hiredStudents;
+    private Integer hiredStudents = 0;
 
     public Sponsor(String name, Integer age, String gender, String company){
         super(name, age, gender);
-        this.hiredStudents = 0;
+        this.company = company;
     }
 
     public Sponsor(){
         this("Jane Doe", 30, "female", "Google");
-        this.hiredStudents = 0;
     }
 
     @Override

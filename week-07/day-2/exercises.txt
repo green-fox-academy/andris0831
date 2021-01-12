@@ -1,0 +1,1076 @@
+Microsoft Windows [Version 10.0.18363.1256]
+(c) 2019 Microsoft Corporation. Minden jog fenntartva.
+
+C:\Users\andri>mysql -u root -p password
+Enter password: ********
+ERROR 1049 (42000): Unknown database 'password'
+
+C:\Users\andri>mysql -u root -p
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> drop table if exists Movie;
+ERROR 1046 (3D000): No database selected
+mysql> create database movies;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> use movies;
+Database changed
+mysql> create table Movie(mID int, title text, year int, director text);
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> create table Reviewer(rID int, name text);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> create table Rating(rID int, mID int, stars int, ratingDate date);
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> insert into Movie values(101, 'Gone with the Wind', 1939, 'Victor Fleming');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Movie values(102, 'Star Wars', 1977, 'George Lucas');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into Movie values(103, 'The Sound of Music', 1965, 'Robert Wise');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Movie values(104, 'E.T.', 1982, 'Steven Spielberg');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Movie values(105, 'Titanic', 1997, 'James Cameron');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Movie values(106, 'Snow White', 1937, null);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into Movie values(107, 'Avatar', 2009, 'James Cameron');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Movie values(108, 'Raiders of the Lost Ark', 1981, 'Steven Spielberg');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Reviewer values(201, 'Sarah Martinez');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Reviewer values(202, 'Daniel Lewis');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Reviewer values(203, 'Brittany Harris');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Reviewer values(204, 'Mike Anderson');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Reviewer values(205, 'Chris Jackson');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Reviewer values(206, 'Elizabeth Thomas');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Reviewer values(207, 'James Cameron');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Reviewer values(208, 'Ashley White');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Rating values(201, 101, 2, '2011-01-22');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into Rating values(201, 101, 4, '2011-01-27');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Rating values(202, 106, 4, null);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Rating values(203, 103, 2, '2011-01-20');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Rating values(203, 108, 4, '2011-01-12');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Rating values(203, 108, 2, '2011-01-30');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Rating values(204, 101, 3, '2011-01-09');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Rating values(205, 103, 3, '2011-01-27');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into Rating values(205, 104, 2, '2011-01-22');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Rating values(205, 108, 4, null);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Rating values(206, 107, 3, '2011-01-15');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Rating values(206, 106, 5, '2011-01-19');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Rating values(207, 107, 5, '2011-01-20');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Rating values(208, 104, 3, '2011-01-02');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show Movies;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Movies' at line 1
+mysql> show Movie;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Movie' at line 1
+mysql> describe Movie;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| mID      | int  | YES  |     | NULL    |       |
+| title    | text | YES  |     | NULL    |       |
+| year     | int  | YES  |     | NULL    |       |
+| director | text | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+mysql> describe Reviewer;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| rID   | int  | YES  |     | NULL    |       |
+| name  | text | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> show Reviewer;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Reviewer' at line 1
+mysql> select title from Movie;
++-------------------------+
+| title                   |
++-------------------------+
+| Gone with the Wind      |
+| Star Wars               |
+| The Sound of Music      |
+| E.T.                    |
+| Titanic                 |
+| Snow White              |
+| Avatar                  |
+| Raiders of the Lost Ark |
++-------------------------+
+8 rows in set (0.01 sec)
+
+mysql> select director as Steven Spielberg from Movie;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Spielberg from Movie' at line 1
+mysql> select * from Movie where director = Steven Spielberg;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Spielberg' at line 1
+mysql> select * from Movie where director = Steven Spielberg;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Spielberg' at line 1
+mysql> select * from Movie where director = "Steven Spielberg";
++------+-------------------------+------+------------------+
+| mID  | title                   | year | director         |
++------+-------------------------+------+------------------+
+|  104 | E.T.                    | 1982 | Steven Spielberg |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |
++------+-------------------------+------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> show Movie;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Movie' at line 1
+mysql> describe Movie;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| mID      | int  | YES  |     | NULL    |       |
+| title    | text | YES  |     | NULL    |       |
+| year     | int  | YES  |     | NULL    |       |
+| director | text | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from Rating where stars >= 4 and stars <= 5;
++------+------+-------+------------+
+| rID  | mID  | stars | ratingDate |
++------+------+-------+------------+
+|  201 |  101 |     4 | 2011-01-27 |
+|  202 |  106 |     4 | NULL       |
+|  203 |  108 |     4 | 2011-01-12 |
+|  205 |  108 |     4 | NULL       |
+|  206 |  106 |     5 | 2011-01-19 |
+|  207 |  107 |     5 | 2011-01-20 |
++------+------+-------+------------+
+6 rows in set (0.00 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_movies |
++------------------+
+| movie            |
+| rating           |
+| reviewer         |
++------------------+
+3 rows in set (0.03 sec)
+
+mysql> show tables from movie;
+ERROR 1049 (42000): Unknown database 'movie'
+mysql> select * from movie inner join rating on rating.stars =>4 and stars <=5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=>4 and stars <=5' at line 1
+mysql> select * from movie inner join rating on rating.stars =>4;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=>4' at line 1
+mysql> select * from movie inner join rating on rating.stars;
++------+-------------------------+------+------------------+------+------+-------+------------+
+| mID  | title                   | year | director         | rID  | mID  | stars | ratingDate |
++------+-------------------------+------+------------------+------+------+-------+------------+
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  201 |  101 |     2 | 2011-01-22 |
+|  102 | Star Wars               | 1977 | George Lucas     |  201 |  101 |     2 | 2011-01-22 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  201 |  101 |     2 | 2011-01-22 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  201 |  101 |     2 | 2011-01-22 |
+|  105 | Titanic                 | 1997 | James Cameron    |  201 |  101 |     2 | 2011-01-22 |
+|  106 | Snow White              | 1937 | NULL             |  201 |  101 |     2 | 2011-01-22 |
+|  107 | Avatar                  | 2009 | James Cameron    |  201 |  101 |     2 | 2011-01-22 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  201 |  101 |     2 | 2011-01-22 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  201 |  101 |     4 | 2011-01-27 |
+|  102 | Star Wars               | 1977 | George Lucas     |  201 |  101 |     4 | 2011-01-27 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  201 |  101 |     4 | 2011-01-27 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  201 |  101 |     4 | 2011-01-27 |
+|  105 | Titanic                 | 1997 | James Cameron    |  201 |  101 |     4 | 2011-01-27 |
+|  106 | Snow White              | 1937 | NULL             |  201 |  101 |     4 | 2011-01-27 |
+|  107 | Avatar                  | 2009 | James Cameron    |  201 |  101 |     4 | 2011-01-27 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  201 |  101 |     4 | 2011-01-27 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  202 |  106 |     4 | NULL       |
+|  102 | Star Wars               | 1977 | George Lucas     |  202 |  106 |     4 | NULL       |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  202 |  106 |     4 | NULL       |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  202 |  106 |     4 | NULL       |
+|  105 | Titanic                 | 1997 | James Cameron    |  202 |  106 |     4 | NULL       |
+|  106 | Snow White              | 1937 | NULL             |  202 |  106 |     4 | NULL       |
+|  107 | Avatar                  | 2009 | James Cameron    |  202 |  106 |     4 | NULL       |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  202 |  106 |     4 | NULL       |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  203 |  103 |     2 | 2011-01-20 |
+|  102 | Star Wars               | 1977 | George Lucas     |  203 |  103 |     2 | 2011-01-20 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  203 |  103 |     2 | 2011-01-20 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  203 |  103 |     2 | 2011-01-20 |
+|  105 | Titanic                 | 1997 | James Cameron    |  203 |  103 |     2 | 2011-01-20 |
+|  106 | Snow White              | 1937 | NULL             |  203 |  103 |     2 | 2011-01-20 |
+|  107 | Avatar                  | 2009 | James Cameron    |  203 |  103 |     2 | 2011-01-20 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  203 |  103 |     2 | 2011-01-20 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  203 |  108 |     4 | 2011-01-12 |
+|  102 | Star Wars               | 1977 | George Lucas     |  203 |  108 |     4 | 2011-01-12 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  203 |  108 |     4 | 2011-01-12 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  203 |  108 |     4 | 2011-01-12 |
+|  105 | Titanic                 | 1997 | James Cameron    |  203 |  108 |     4 | 2011-01-12 |
+|  106 | Snow White              | 1937 | NULL             |  203 |  108 |     4 | 2011-01-12 |
+|  107 | Avatar                  | 2009 | James Cameron    |  203 |  108 |     4 | 2011-01-12 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  203 |  108 |     4 | 2011-01-12 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  203 |  108 |     2 | 2011-01-30 |
+|  102 | Star Wars               | 1977 | George Lucas     |  203 |  108 |     2 | 2011-01-30 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  203 |  108 |     2 | 2011-01-30 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  203 |  108 |     2 | 2011-01-30 |
+|  105 | Titanic                 | 1997 | James Cameron    |  203 |  108 |     2 | 2011-01-30 |
+|  106 | Snow White              | 1937 | NULL             |  203 |  108 |     2 | 2011-01-30 |
+|  107 | Avatar                  | 2009 | James Cameron    |  203 |  108 |     2 | 2011-01-30 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  203 |  108 |     2 | 2011-01-30 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  204 |  101 |     3 | 2011-01-09 |
+|  102 | Star Wars               | 1977 | George Lucas     |  204 |  101 |     3 | 2011-01-09 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  204 |  101 |     3 | 2011-01-09 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  204 |  101 |     3 | 2011-01-09 |
+|  105 | Titanic                 | 1997 | James Cameron    |  204 |  101 |     3 | 2011-01-09 |
+|  106 | Snow White              | 1937 | NULL             |  204 |  101 |     3 | 2011-01-09 |
+|  107 | Avatar                  | 2009 | James Cameron    |  204 |  101 |     3 | 2011-01-09 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  204 |  101 |     3 | 2011-01-09 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  205 |  103 |     3 | 2011-01-27 |
+|  102 | Star Wars               | 1977 | George Lucas     |  205 |  103 |     3 | 2011-01-27 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  205 |  103 |     3 | 2011-01-27 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  205 |  103 |     3 | 2011-01-27 |
+|  105 | Titanic                 | 1997 | James Cameron    |  205 |  103 |     3 | 2011-01-27 |
+|  106 | Snow White              | 1937 | NULL             |  205 |  103 |     3 | 2011-01-27 |
+|  107 | Avatar                  | 2009 | James Cameron    |  205 |  103 |     3 | 2011-01-27 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  205 |  103 |     3 | 2011-01-27 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  205 |  104 |     2 | 2011-01-22 |
+|  102 | Star Wars               | 1977 | George Lucas     |  205 |  104 |     2 | 2011-01-22 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  205 |  104 |     2 | 2011-01-22 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  205 |  104 |     2 | 2011-01-22 |
+|  105 | Titanic                 | 1997 | James Cameron    |  205 |  104 |     2 | 2011-01-22 |
+|  106 | Snow White              | 1937 | NULL             |  205 |  104 |     2 | 2011-01-22 |
+|  107 | Avatar                  | 2009 | James Cameron    |  205 |  104 |     2 | 2011-01-22 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  205 |  104 |     2 | 2011-01-22 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  205 |  108 |     4 | NULL       |
+|  102 | Star Wars               | 1977 | George Lucas     |  205 |  108 |     4 | NULL       |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  205 |  108 |     4 | NULL       |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  205 |  108 |     4 | NULL       |
+|  105 | Titanic                 | 1997 | James Cameron    |  205 |  108 |     4 | NULL       |
+|  106 | Snow White              | 1937 | NULL             |  205 |  108 |     4 | NULL       |
+|  107 | Avatar                  | 2009 | James Cameron    |  205 |  108 |     4 | NULL       |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  205 |  108 |     4 | NULL       |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  206 |  107 |     3 | 2011-01-15 |
+|  102 | Star Wars               | 1977 | George Lucas     |  206 |  107 |     3 | 2011-01-15 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  206 |  107 |     3 | 2011-01-15 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  206 |  107 |     3 | 2011-01-15 |
+|  105 | Titanic                 | 1997 | James Cameron    |  206 |  107 |     3 | 2011-01-15 |
+|  106 | Snow White              | 1937 | NULL             |  206 |  107 |     3 | 2011-01-15 |
+|  107 | Avatar                  | 2009 | James Cameron    |  206 |  107 |     3 | 2011-01-15 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  206 |  107 |     3 | 2011-01-15 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  206 |  106 |     5 | 2011-01-19 |
+|  102 | Star Wars               | 1977 | George Lucas     |  206 |  106 |     5 | 2011-01-19 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  206 |  106 |     5 | 2011-01-19 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  206 |  106 |     5 | 2011-01-19 |
+|  105 | Titanic                 | 1997 | James Cameron    |  206 |  106 |     5 | 2011-01-19 |
+|  106 | Snow White              | 1937 | NULL             |  206 |  106 |     5 | 2011-01-19 |
+|  107 | Avatar                  | 2009 | James Cameron    |  206 |  106 |     5 | 2011-01-19 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  206 |  106 |     5 | 2011-01-19 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  207 |  107 |     5 | 2011-01-20 |
+|  102 | Star Wars               | 1977 | George Lucas     |  207 |  107 |     5 | 2011-01-20 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  207 |  107 |     5 | 2011-01-20 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  207 |  107 |     5 | 2011-01-20 |
+|  105 | Titanic                 | 1997 | James Cameron    |  207 |  107 |     5 | 2011-01-20 |
+|  106 | Snow White              | 1937 | NULL             |  207 |  107 |     5 | 2011-01-20 |
+|  107 | Avatar                  | 2009 | James Cameron    |  207 |  107 |     5 | 2011-01-20 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  207 |  107 |     5 | 2011-01-20 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  208 |  104 |     3 | 2011-01-02 |
+|  102 | Star Wars               | 1977 | George Lucas     |  208 |  104 |     3 | 2011-01-02 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  208 |  104 |     3 | 2011-01-02 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  208 |  104 |     3 | 2011-01-02 |
+|  105 | Titanic                 | 1997 | James Cameron    |  208 |  104 |     3 | 2011-01-02 |
+|  106 | Snow White              | 1937 | NULL             |  208 |  104 |     3 | 2011-01-02 |
+|  107 | Avatar                  | 2009 | James Cameron    |  208 |  104 |     3 | 2011-01-02 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  208 |  104 |     3 | 2011-01-02 |
++------+-------------------------+------+------------------+------+------+-------+------------+
+112 rows in set (0.01 sec)
+
+mysql> select * from movie inner join rating on movie.mID = rating.mID;
++------+-------------------------+------+------------------+------+------+-------+------------+
+| mID  | title                   | year | director         | rID  | mID  | stars | ratingDate |
++------+-------------------------+------+------------------+------+------+-------+------------+
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  201 |  101 |     2 | 2011-01-22 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  201 |  101 |     4 | 2011-01-27 |
+|  106 | Snow White              | 1937 | NULL             |  202 |  106 |     4 | NULL       |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  203 |  103 |     2 | 2011-01-20 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  203 |  108 |     4 | 2011-01-12 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  203 |  108 |     2 | 2011-01-30 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  204 |  101 |     3 | 2011-01-09 |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  205 |  103 |     3 | 2011-01-27 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  205 |  104 |     2 | 2011-01-22 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  205 |  108 |     4 | NULL       |
+|  107 | Avatar                  | 2009 | James Cameron    |  206 |  107 |     3 | 2011-01-15 |
+|  106 | Snow White              | 1937 | NULL             |  206 |  106 |     5 | 2011-01-19 |
+|  107 | Avatar                  | 2009 | James Cameron    |  207 |  107 |     5 | 2011-01-20 |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  208 |  104 |     3 | 2011-01-02 |
++------+-------------------------+------+------------------+------+------+-------+------------+
+14 rows in set (0.01 sec)
+
+mysql> select * from movie inner join rating on movie.mID = rating.mID stars >=4 and stars <=5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'stars >=4 and stars <=5' at line 1
+mysql> select * from movie inner join rating on movie.mID = rating.mID stars >=4;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'stars >=4' at line 1
+mysql> select * from movie inner join rating on movie.mID = rating.mID where stars >=4;
++------+-------------------------+------+------------------+------+------+-------+------------+
+| mID  | title                   | year | director         | rID  | mID  | stars | ratingDate |
++------+-------------------------+------+------------------+------+------+-------+------------+
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  201 |  101 |     4 | 2011-01-27 |
+|  106 | Snow White              | 1937 | NULL             |  202 |  106 |     4 | NULL       |
+|  106 | Snow White              | 1937 | NULL             |  206 |  106 |     5 | 2011-01-19 |
+|  107 | Avatar                  | 2009 | James Cameron    |  207 |  107 |     5 | 2011-01-20 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  203 |  108 |     4 | 2011-01-12 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  205 |  108 |     4 | NULL       |
++------+-------------------------+------+------------------+------+------+-------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from movie inner join rating on movie.mID = rating.mID where stars >=4 order by year;
++------+-------------------------+------+------------------+------+------+-------+------------+
+| mID  | title                   | year | director         | rID  | mID  | stars | ratingDate |
++------+-------------------------+------+------------------+------+------+-------+------------+
+|  106 | Snow White              | 1937 | NULL             |  202 |  106 |     4 | NULL       |
+|  106 | Snow White              | 1937 | NULL             |  206 |  106 |     5 | 2011-01-19 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  201 |  101 |     4 | 2011-01-27 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  203 |  108 |     4 | 2011-01-12 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  205 |  108 |     4 | NULL       |
+|  107 | Avatar                  | 2009 | James Cameron    |  207 |  107 |     5 | 2011-01-20 |
++------+-------------------------+------+------------------+------+------+-------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from movie inner join rating on movie.mID = rating.mID where stars >=4 order by year asc;
++------+-------------------------+------+------------------+------+------+-------+------------+
+| mID  | title                   | year | director         | rID  | mID  | stars | ratingDate |
++------+-------------------------+------+------------------+------+------+-------+------------+
+|  106 | Snow White              | 1937 | NULL             |  202 |  106 |     4 | NULL       |
+|  106 | Snow White              | 1937 | NULL             |  206 |  106 |     5 | 2011-01-19 |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  201 |  101 |     4 | 2011-01-27 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  203 |  108 |     4 | 2011-01-12 |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  205 |  108 |     4 | NULL       |
+|  107 | Avatar                  | 2009 | James Cameron    |  207 |  107 |     5 | 2011-01-20 |
++------+-------------------------+------+------------------+------+------+-------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select year from movie inner join rating on movie.mID = rating.mID where stars >=4 order by year asc;
++------+
+| year |
++------+
+| 1937 |
+| 1937 |
+| 1939 |
+| 1981 |
+| 1981 |
+| 2009 |
++------+
+6 rows in set (0.00 sec)
+
+mysql> select year from movie inner join rating on movie.mID = rating.mID where stars >=4 order by year;
++------+
+| year |
++------+
+| 1937 |
+| 1937 |
+| 1939 |
+| 1981 |
+| 1981 |
+| 2009 |
++------+
+6 rows in set (0.00 sec)
+
+mysql>
+mysql> select distinct year from movie inner join rating on movie.mID = rating.mID where stars >=4 order by year;
++------+
+| year |
++------+
+| 1937 |
+| 1939 |
+| 1981 |
+| 2009 |
++------+
+4 rows in set (0.01 sec)
+
+mysql> select title from movie inner join rating on movie.mID = rating.mID where rating = NULL;
+ERROR 1054 (42S22): Unknown column 'rating' in 'where clause'
+mysql> select title from movie inner join rating on movie.mID = rating.mID where ratingDate = null;
+Empty set (0.00 sec)
+
+mysql> select title from movie inner join rating on movie.mID = rating.mID where ratingDate = null order by title;
+Empty set (0.00 sec)
+
+mysql> select title from movie inner join rating on movie.mID = rating.mID;
++-------------------------+
+| title                   |
++-------------------------+
+| Gone with the Wind      |
+| Gone with the Wind      |
+| Snow White              |
+| The Sound of Music      |
+| Raiders of the Lost Ark |
+| Raiders of the Lost Ark |
+| Gone with the Wind      |
+| The Sound of Music      |
+| E.T.                    |
+| Raiders of the Lost Ark |
+| Avatar                  |
+| Snow White              |
+| Avatar                  |
+| E.T.                    |
++-------------------------+
+14 rows in set (0.00 sec)
+
+mysql> select title from movie inner join rating on movie.mID = rating.mID where ratingDate = null;
+Empty set (0.00 sec)
+
+mysql> select * from rating
+    -> ;
++------+------+-------+------------+
+| rID  | mID  | stars | ratingDate |
++------+------+-------+------------+
+|  201 |  101 |     2 | 2011-01-22 |
+|  201 |  101 |     4 | 2011-01-27 |
+|  202 |  106 |     4 | NULL       |
+|  203 |  103 |     2 | 2011-01-20 |
+|  203 |  108 |     4 | 2011-01-12 |
+|  203 |  108 |     2 | 2011-01-30 |
+|  204 |  101 |     3 | 2011-01-09 |
+|  205 |  103 |     3 | 2011-01-27 |
+|  205 |  104 |     2 | 2011-01-22 |
+|  205 |  108 |     4 | NULL       |
+|  206 |  107 |     3 | 2011-01-15 |
+|  206 |  106 |     5 | 2011-01-19 |
+|  207 |  107 |     5 | 2011-01-20 |
+|  208 |  104 |     3 | 2011-01-02 |
++------+------+-------+------------+
+14 rows in set (0.00 sec)
+
+mysql> select * movie;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'movie' at line 1
+mysql> select * from movie;
++------+-------------------------+------+------------------+
+| mID  | title                   | year | director         |
++------+-------------------------+------+------------------+
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |
+|  102 | Star Wars               | 1977 | George Lucas     |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |
+|  104 | E.T.                    | 1982 | Steven Spielberg |
+|  105 | Titanic                 | 1997 | James Cameron    |
+|  106 | Snow White              | 1937 | NULL             |
+|  107 | Avatar                  | 2009 | James Cameron    |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |
++------+-------------------------+------+------------------+
+8 rows in set (0.00 sec)
+
+mysql> select title from movie outer join rating on movie.mID = rating.mID;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'outer join rating on movie.mID = rating.mID' at line 1
+mysql> select title from movie outer join rating on movie.mID = rating.mID;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'outer join rating on movie.mID = rating.mID' at line 1
+mysql> select title from movie left join rating on movie.mID = rating.mID where movie.director = null;
+Empty set (0.00 sec)
+
+mysql> select title from movie where movie.mID not in (select mID from rating);
++-----------+
+| title     |
++-----------+
+| Star Wars |
+| Titanic   |
++-----------+
+2 rows in set (0.01 sec)
+
+mysql> select title from movie left join rating on movie.mID = rating.mID where stars is null;
++-----------+
+| title     |
++-----------+
+| Star Wars |
+| Titanic   |
++-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from rating;
++------+------+-------+------------+
+| rID  | mID  | stars | ratingDate |
++------+------+-------+------------+
+|  201 |  101 |     2 | 2011-01-22 |
+|  201 |  101 |     4 | 2011-01-27 |
+|  202 |  106 |     4 | NULL       |
+|  203 |  103 |     2 | 2011-01-20 |
+|  203 |  108 |     4 | 2011-01-12 |
+|  203 |  108 |     2 | 2011-01-30 |
+|  204 |  101 |     3 | 2011-01-09 |
+|  205 |  103 |     3 | 2011-01-27 |
+|  205 |  104 |     2 | 2011-01-22 |
+|  205 |  108 |     4 | NULL       |
+|  206 |  107 |     3 | 2011-01-15 |
+|  206 |  106 |     5 | 2011-01-19 |
+|  207 |  107 |     5 | 2011-01-20 |
+|  208 |  104 |     3 | 2011-01-02 |
++------+------+-------+------------+
+14 rows in set (0.00 sec)
+
+mysql> select name from reviewer left join rating on reviewer.rID = rating.rID where ratingDate is null;
++---------------+
+| name          |
++---------------+
+| Daniel Lewis  |
+| Chris Jackson |
++---------------+
+2 rows in set (0.01 sec)
+
+mysql> select * from movie inner join rating on movie.mID = rating.mID inner join reviewer on rating.rID = reviewer.rID;
++------+-------------------------+------+------------------+------+------+-------+------------+------+------------------+
+| mID  | title                   | year | director         | rID  | mID  | stars | ratingDate | rID  | name             |
++------+-------------------------+------+------------------+------+------+-------+------------+------+------------------+
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  201 |  101 |     2 | 2011-01-22 |  201 | Sarah Martinez   |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  201 |  101 |     4 | 2011-01-27 |  201 | Sarah Martinez   |
+|  106 | Snow White              | 1937 | NULL             |  202 |  106 |     4 | NULL       |  202 | Daniel Lewis     |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  203 |  103 |     2 | 2011-01-20 |  203 | Brittany Harris  |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  203 |  108 |     4 | 2011-01-12 |  203 | Brittany Harris  |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  203 |  108 |     2 | 2011-01-30 |  203 | Brittany Harris  |
+|  101 | Gone with the Wind      | 1939 | Victor Fleming   |  204 |  101 |     3 | 2011-01-09 |  204 | Mike Anderson    |
+|  103 | The Sound of Music      | 1965 | Robert Wise      |  205 |  103 |     3 | 2011-01-27 |  205 | Chris Jackson    |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  205 |  104 |     2 | 2011-01-22 |  205 | Chris Jackson    |
+|  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |  205 |  108 |     4 | NULL       |  205 | Chris Jackson    |
+|  107 | Avatar                  | 2009 | James Cameron    |  206 |  107 |     3 | 2011-01-15 |  206 | Elizabeth Thomas |
+|  106 | Snow White              | 1937 | NULL             |  206 |  106 |     5 | 2011-01-19 |  206 | Elizabeth Thomas |
+|  107 | Avatar                  | 2009 | James Cameron    |  207 |  107 |     5 | 2011-01-20 |  207 | James Cameron    |
+|  104 | E.T.                    | 1982 | Steven Spielberg |  208 |  104 |     3 | 2011-01-02 |  208 | Ashley White     |
++------+-------------------------+------+------------------+------+------+-------+------------+------+------------------+
+14 rows in set (0.00 sec)
+
+mysql> select name from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID;
++------------------+
+| name             |
++------------------+
+| Sarah Martinez   |
+| Sarah Martinez   |
+| Mike Anderson    |
+| Brittany Harris  |
+| Chris Jackson    |
+| Chris Jackson    |
+| Ashley White     |
+| Daniel Lewis     |
+| Elizabeth Thomas |
+| Elizabeth Thomas |
+| James Cameron    |
+| Brittany Harris  |
+| Brittany Harris  |
+| Chris Jackson    |
++------------------+
+14 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title, rating.stars, rating.ratingDate from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID;
++------------------+-------------------------+-------+------------+
+| name             | title                   | stars | ratingDate |
++------------------+-------------------------+-------+------------+
+| Sarah Martinez   | Gone with the Wind      |     2 | 2011-01-22 |
+| Sarah Martinez   | Gone with the Wind      |     4 | 2011-01-27 |
+| Mike Anderson    | Gone with the Wind      |     3 | 2011-01-09 |
+| Brittany Harris  | The Sound of Music      |     2 | 2011-01-20 |
+| Chris Jackson    | The Sound of Music      |     3 | 2011-01-27 |
+| Chris Jackson    | E.T.                    |     2 | 2011-01-22 |
+| Ashley White     | E.T.                    |     3 | 2011-01-02 |
+| Daniel Lewis     | Snow White              |     4 | NULL       |
+| Elizabeth Thomas | Snow White              |     5 | 2011-01-19 |
+| Elizabeth Thomas | Avatar                  |     3 | 2011-01-15 |
+| James Cameron    | Avatar                  |     5 | 2011-01-20 |
+| Brittany Harris  | Raiders of the Lost Ark |     4 | 2011-01-12 |
+| Brittany Harris  | Raiders of the Lost Ark |     2 | 2011-01-30 |
+| Chris Jackson    | Raiders of the Lost Ark |     4 | NULL       |
++------------------+-------------------------+-------+------------+
+14 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title, rating.stars, rating.ratingDate from reviewer inner join rating on reviewer.rID = rating.rID order by name inner join movie on rating.mID = movie.mID order by stars;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inner join movie on rating.mID = movie.mID order by stars' at line 1
+mysql> select reviewer.name, movie.title, rating.stars, rating.ratingDate from reviewer inner join rating on reviewer.rID = rating.rID order by name inner join movie on rating.mID = movie.mID;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inner join movie on rating.mID = movie.mID' at line 1
+mysql> select reviewer.name, movie.title, rating.stars, rating.ratingDate from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID;
++------------------+-------------------------+-------+------------+
+| name             | title                   | stars | ratingDate |
++------------------+-------------------------+-------+------------+
+| Sarah Martinez   | Gone with the Wind      |     2 | 2011-01-22 |
+| Sarah Martinez   | Gone with the Wind      |     4 | 2011-01-27 |
+| Mike Anderson    | Gone with the Wind      |     3 | 2011-01-09 |
+| Brittany Harris  | The Sound of Music      |     2 | 2011-01-20 |
+| Chris Jackson    | The Sound of Music      |     3 | 2011-01-27 |
+| Chris Jackson    | E.T.                    |     2 | 2011-01-22 |
+| Ashley White     | E.T.                    |     3 | 2011-01-02 |
+| Daniel Lewis     | Snow White              |     4 | NULL       |
+| Elizabeth Thomas | Snow White              |     5 | 2011-01-19 |
+| Elizabeth Thomas | Avatar                  |     3 | 2011-01-15 |
+| James Cameron    | Avatar                  |     5 | 2011-01-20 |
+| Brittany Harris  | Raiders of the Lost Ark |     4 | 2011-01-12 |
+| Brittany Harris  | Raiders of the Lost Ark |     2 | 2011-01-30 |
+| Chris Jackson    | Raiders of the Lost Ark |     4 | NULL       |
++------------------+-------------------------+-------+------------+
+14 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title, rating.stars, rating.ratingDate from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID order by name;
++------------------+-------------------------+-------+------------+
+| name             | title                   | stars | ratingDate |
++------------------+-------------------------+-------+------------+
+| Ashley White     | E.T.                    |     3 | 2011-01-02 |
+| Brittany Harris  | The Sound of Music      |     2 | 2011-01-20 |
+| Brittany Harris  | Raiders of the Lost Ark |     4 | 2011-01-12 |
+| Brittany Harris  | Raiders of the Lost Ark |     2 | 2011-01-30 |
+| Chris Jackson    | The Sound of Music      |     3 | 2011-01-27 |
+| Chris Jackson    | E.T.                    |     2 | 2011-01-22 |
+| Chris Jackson    | Raiders of the Lost Ark |     4 | NULL       |
+| Daniel Lewis     | Snow White              |     4 | NULL       |
+| Elizabeth Thomas | Snow White              |     5 | 2011-01-19 |
+| Elizabeth Thomas | Avatar                  |     3 | 2011-01-15 |
+| James Cameron    | Avatar                  |     5 | 2011-01-20 |
+| Mike Anderson    | Gone with the Wind      |     3 | 2011-01-09 |
+| Sarah Martinez   | Gone with the Wind      |     2 | 2011-01-22 |
+| Sarah Martinez   | Gone with the Wind      |     4 | 2011-01-27 |
++------------------+-------------------------+-------+------------+
+14 rows in set (0.01 sec)
+
+mysql> select reviewer.name, movie.title, rating.stars, rating.ratingDate from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID order by name, stars;
++------------------+-------------------------+-------+------------+
+| name             | title                   | stars | ratingDate |
++------------------+-------------------------+-------+------------+
+| Ashley White     | E.T.                    |     3 | 2011-01-02 |
+| Brittany Harris  | The Sound of Music      |     2 | 2011-01-20 |
+| Brittany Harris  | Raiders of the Lost Ark |     2 | 2011-01-30 |
+| Brittany Harris  | Raiders of the Lost Ark |     4 | 2011-01-12 |
+| Chris Jackson    | E.T.                    |     2 | 2011-01-22 |
+| Chris Jackson    | The Sound of Music      |     3 | 2011-01-27 |
+| Chris Jackson    | Raiders of the Lost Ark |     4 | NULL       |
+| Daniel Lewis     | Snow White              |     4 | NULL       |
+| Elizabeth Thomas | Avatar                  |     3 | 2011-01-15 |
+| Elizabeth Thomas | Snow White              |     5 | 2011-01-19 |
+| James Cameron    | Avatar                  |     5 | 2011-01-20 |
+| Mike Anderson    | Gone with the Wind      |     3 | 2011-01-09 |
+| Sarah Martinez   | Gone with the Wind      |     2 | 2011-01-22 |
+| Sarah Martinez   | Gone with the Wind      |     4 | 2011-01-27 |
++------------------+-------------------------+-------+------------+
+14 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title, rating.stars, rating.ratingDate from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID order by name and stars;
++------------------+-------------------------+-------+------------+
+| name             | title                   | stars | ratingDate |
++------------------+-------------------------+-------+------------+
+| Sarah Martinez   | Gone with the Wind      |     2 | 2011-01-22 |
+| Sarah Martinez   | Gone with the Wind      |     4 | 2011-01-27 |
+| Mike Anderson    | Gone with the Wind      |     3 | 2011-01-09 |
+| Brittany Harris  | The Sound of Music      |     2 | 2011-01-20 |
+| Chris Jackson    | The Sound of Music      |     3 | 2011-01-27 |
+| Chris Jackson    | E.T.                    |     2 | 2011-01-22 |
+| Ashley White     | E.T.                    |     3 | 2011-01-02 |
+| Daniel Lewis     | Snow White              |     4 | NULL       |
+| Elizabeth Thomas | Snow White              |     5 | 2011-01-19 |
+| Elizabeth Thomas | Avatar                  |     3 | 2011-01-15 |
+| James Cameron    | Avatar                  |     5 | 2011-01-20 |
+| Brittany Harris  | Raiders of the Lost Ark |     4 | 2011-01-12 |
+| Brittany Harris  | Raiders of the Lost Ark |     2 | 2011-01-30 |
+| Chris Jackson    | Raiders of the Lost Ark |     4 | NULL       |
++------------------+-------------------------+-------+------------+
+14 rows in set (0.01 sec)
+
+mysql> select reviewer.name, movie.title, rating.stars, rating.ratingDate from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID order by name;
++------------------+-------------------------+-------+------------+
+| name             | title                   | stars | ratingDate |
++------------------+-------------------------+-------+------------+
+| Ashley White     | E.T.                    |     3 | 2011-01-02 |
+| Brittany Harris  | The Sound of Music      |     2 | 2011-01-20 |
+| Brittany Harris  | Raiders of the Lost Ark |     4 | 2011-01-12 |
+| Brittany Harris  | Raiders of the Lost Ark |     2 | 2011-01-30 |
+| Chris Jackson    | The Sound of Music      |     3 | 2011-01-27 |
+| Chris Jackson    | E.T.                    |     2 | 2011-01-22 |
+| Chris Jackson    | Raiders of the Lost Ark |     4 | NULL       |
+| Daniel Lewis     | Snow White              |     4 | NULL       |
+| Elizabeth Thomas | Snow White              |     5 | 2011-01-19 |
+| Elizabeth Thomas | Avatar                  |     3 | 2011-01-15 |
+| James Cameron    | Avatar                  |     5 | 2011-01-20 |
+| Mike Anderson    | Gone with the Wind      |     3 | 2011-01-09 |
+| Sarah Martinez   | Gone with the Wind      |     2 | 2011-01-22 |
+| Sarah Martinez   | Gone with the Wind      |     4 | 2011-01-27 |
++------------------+-------------------------+-------+------------+
+14 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title, rating.stars, rating.ratingDate from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID order by name asc, title asc, ratingDate asc;
++------------------+-------------------------+-------+------------+
+| name             | title                   | stars | ratingDate |
++------------------+-------------------------+-------+------------+
+| Ashley White     | E.T.                    |     3 | 2011-01-02 |
+| Brittany Harris  | Raiders of the Lost Ark |     4 | 2011-01-12 |
+| Brittany Harris  | Raiders of the Lost Ark |     2 | 2011-01-30 |
+| Brittany Harris  | The Sound of Music      |     2 | 2011-01-20 |
+| Chris Jackson    | E.T.                    |     2 | 2011-01-22 |
+| Chris Jackson    | Raiders of the Lost Ark |     4 | NULL       |
+| Chris Jackson    | The Sound of Music      |     3 | 2011-01-27 |
+| Daniel Lewis     | Snow White              |     4 | NULL       |
+| Elizabeth Thomas | Avatar                  |     3 | 2011-01-15 |
+| Elizabeth Thomas | Snow White              |     5 | 2011-01-19 |
+| James Cameron    | Avatar                  |     5 | 2011-01-20 |
+| Mike Anderson    | Gone with the Wind      |     3 | 2011-01-09 |
+| Sarah Martinez   | Gone with the Wind      |     2 | 2011-01-22 |
+| Sarah Martinez   | Gone with the Wind      |     4 | 2011-01-27 |
++------------------+-------------------------+-------+------------+
+14 rows in set (0.00 sec)
+
+mysql> select distinct reviewer.name, movie.title from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID;
++------------------+-------------------------+
+| name             | title                   |
++------------------+-------------------------+
+| Sarah Martinez   | Gone with the Wind      |
+| Mike Anderson    | Gone with the Wind      |
+| Brittany Harris  | The Sound of Music      |
+| Chris Jackson    | The Sound of Music      |
+| Chris Jackson    | E.T.                    |
+| Ashley White     | E.T.                    |
+| Daniel Lewis     | Snow White              |
+| Elizabeth Thomas | Snow White              |
+| Elizabeth Thomas | Avatar                  |
+| James Cameron    | Avatar                  |
+| Brittany Harris  | Raiders of the Lost Ark |
+| Chris Jackson    | Raiders of the Lost Ark |
++------------------+-------------------------+
+12 rows in set (0.00 sec)
+
+mysql> select distinct reviewer.name, movie.title from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID group by stars;
++------------------+--------------------+
+| name             | title              |
++------------------+--------------------+
+| Elizabeth Thomas | Snow White         |
+| Mike Anderson    | Gone with the Wind |
+| Sarah Martinez   | Gone with the Wind |
++------------------+--------------------+
+3 rows in set (0.00 sec)
+
+mysql> select distinct reviewer.name, movie.title from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID where title = "Gone with the Wind" group by stars;
++----------------+--------------------+
+| name           | title              |
++----------------+--------------------+
+| Mike Anderson  | Gone with the Wind |
+| Sarah Martinez | Gone with the Wind |
++----------------+--------------------+
+2 rows in set (0.00 sec)
+
+mysql> select distinct reviewer.name, movie.title from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID where title = "Gone with the Wind" and name = "Sarah Martinez" group by stars;
++----------------+--------------------+
+| name           | title              |
++----------------+--------------------+
+| Sarah Martinez | Gone with the Wind |
++----------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql> select distinct reviewer.name, movie.title from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID where title = "Gone with the Wind" and name = "Sarah Martinez";
++----------------+--------------------+
+| name           | title              |
++----------------+--------------------+
+| Sarah Martinez | Gone with the Wind |
++----------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql> select distinct reviewer.name, movie.title from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID where stars > 2;
++------------------+-------------------------+
+| name             | title                   |
++------------------+-------------------------+
+| Sarah Martinez   | Gone with the Wind      |
+| Mike Anderson    | Gone with the Wind      |
+| Chris Jackson    | The Sound of Music      |
+| Ashley White     | E.T.                    |
+| Daniel Lewis     | Snow White              |
+| Elizabeth Thomas | Snow White              |
+| Elizabeth Thomas | Avatar                  |
+| James Cameron    | Avatar                  |
+| Brittany Harris  | Raiders of the Lost Ark |
+| Chris Jackson    | Raiders of the Lost Ark |
++------------------+-------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select distinct reviewer.name, movie.title from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID where title = "Gone with the Wind" group by stars;
++----------------+--------------------+
+| name           | title              |
++----------------+--------------------+
+| Mike Anderson  | Gone with the Wind |
+| Sarah Martinez | Gone with the Wind |
++----------------+--------------------+
+2 rows in set (0.00 sec)
+
+mysql> select distinct reviewer.name, movie.title from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID having count(*)>1;
++----------------+--------------------+
+| name           | title              |
++----------------+--------------------+
+| Sarah Martinez | Gone with the Wind |
++----------------+--------------------+
+1 row in set (0.01 sec)
+
+mysql> select reviewer.name, movie.title from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID having count(*)>1;
++----------------+--------------------+
+| name           | title              |
++----------------+--------------------+
+| Sarah Martinez | Gone with the Wind |
++----------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID having count(*)>1;
++----------------+--------------------+
+| name           | title              |
++----------------+--------------------+
+| Sarah Martinez | Gone with the Wind |
++----------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql> select select name, title from rating inner join reviewer on rating.rID = reviewer.rID inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID having count(*) > 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select name, title from rating inner join reviewer on rating.rID = reviewer.rID ' at line 1
+mysql> select select name, title from rating inner join reviewer on rating.rID = reviewer.rID inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID having count(*) > 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select name, title from rating inner join reviewer on rating.rID = reviewer.rID ' at line 1
+mysql> select select name, title from rating inner join reviewer on rating.rID = reviewer.rID inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID having count(*) > 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select name, title from rating inner join reviewer on rating.rID = reviewer.rID ' at line 1
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> select name, title from rating inner join reviewer on rating.rID = reviewer.rID as rating1 inner join rating on reviewer.rID = rating.rID as rating2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as rating1 inner join rating on reviewer.rID = rating.rID as rating2' at line 1
+mysql> select name, title from rating as rating1 inner join reviewer on rating.rID = reviewer.rID inner join rating as rating2 on reviewer.rID = rating.rID;
+ERROR 1054 (42S22): Unknown column 'title' in 'field list'
+mysql> select name, title from rating as rating1 inner join reviewer on rating.rID = reviewer.rID inner join rating as rating2 on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID;
+ERROR 1054 (42S22): Unknown column 'rating.mID' in 'on clause'
+mysql> select rating.name, movie.title from rating as rating1 inner join reviewer on rating.rID = reviewer.rID inner join rating as rating2 on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID;
+ERROR 1054 (42S22): Unknown column 'rating.name' in 'field list'
+mysql> select rating.name, movie.title from rating as rating1 inner join reviewer on rating.rID = reviewer.rID inner join rating as rating2 on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID;
+ERROR 1054 (42S22): Unknown column 'rating.name' in 'field list'
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> select name, title from rating as rating1 inner join reviewer on rating.rID = reviewer.rID inner join rating as rating2 on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID;
+ERROR 1054 (42S22): Unknown column 'rating.mID' in 'on clause'
+mysql> select select name, title from rating inner join reviewer on rating.rID = reviewer.rID inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID having count(*) > 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select name, title from rating inner join reviewer on rating.rID = reviewer.rID ' at line 1
+mysql> select reviewer.name, movie.title from reviewer inner join rating on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID having count(*)>1;
++----------------+--------------------+
+| name           | title              |
++----------------+--------------------+
+| Sarah Martinez | Gone with the Wind |
++----------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql> select name, title from rating as rating1 inner join reviewer on rating.rID = reviewer.rID inner join rating as rating2 on reviewer.rID = rating.rID inner join movie on rating.mID = movie.mID;
+ERROR 1054 (42S22): Unknown column 'rating.mID' in 'on clause'
+mysql> describe reviewer;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| rID   | int  | YES  |     | NULL    |       |
+| name  | text | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> describe rating;
++------------+------+------+-----+---------+-------+
+| Field      | Type | Null | Key | Default | Extra |
++------------+------+------+-----+---------+-------+
+| rID        | int  | YES  |     | NULL    |       |
+| mID        | int  | YES  |     | NULL    |       |
+| stars      | int  | YES  |     | NULL    |       |
+| ratingDate | date | YES  |     | NULL    |       |
++------------+------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> select name, title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on reviewer.rID = rating2.rID inner join movie on rating.mID = movie.mID;
+ERROR 1054 (42S22): Unknown column 'rating.mID' in 'on clause'
+mysql> select name, title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on rating.mID = movie.mID;
+ERROR 1054 (42S22): Unknown column 'rating.mID' in 'on clause'
+mysql> select * from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on movie.mID = rating2.mID;
++------+------+-------+------------+------+------------------+------+------+-------+------------+------+-------------------------+------+------------------+
+| rID  | mID  | stars | ratingDate | rID  | name             | rID  | mID  | stars | ratingDate | mID  | title                   | year | director         |
++------+------+-------+------------+------+------------------+------+------+-------+------------+------+-------------------------+------+------------------+
+|  201 |  101 |     2 | 2011-01-22 |  201 | Sarah Martinez   |  201 |  101 |     2 | 2011-01-22 |  101 | Gone with the Wind      | 1939 | Victor Fleming   |
+|  201 |  101 |     2 | 2011-01-22 |  201 | Sarah Martinez   |  201 |  101 |     4 | 2011-01-27 |  101 | Gone with the Wind      | 1939 | Victor Fleming   |
+|  201 |  101 |     4 | 2011-01-27 |  201 | Sarah Martinez   |  201 |  101 |     2 | 2011-01-22 |  101 | Gone with the Wind      | 1939 | Victor Fleming   |
+|  201 |  101 |     4 | 2011-01-27 |  201 | Sarah Martinez   |  201 |  101 |     4 | 2011-01-27 |  101 | Gone with the Wind      | 1939 | Victor Fleming   |
+|  202 |  106 |     4 | NULL       |  202 | Daniel Lewis     |  202 |  106 |     4 | NULL       |  106 | Snow White              | 1937 | NULL             |
+|  203 |  103 |     2 | 2011-01-20 |  203 | Brittany Harris  |  203 |  103 |     2 | 2011-01-20 |  103 | The Sound of Music      | 1965 | Robert Wise      |
+|  203 |  103 |     2 | 2011-01-20 |  203 | Brittany Harris  |  203 |  108 |     4 | 2011-01-12 |  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |
+|  203 |  103 |     2 | 2011-01-20 |  203 | Brittany Harris  |  203 |  108 |     2 | 2011-01-30 |  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |
+|  203 |  108 |     4 | 2011-01-12 |  203 | Brittany Harris  |  203 |  103 |     2 | 2011-01-20 |  103 | The Sound of Music      | 1965 | Robert Wise      |
+|  203 |  108 |     4 | 2011-01-12 |  203 | Brittany Harris  |  203 |  108 |     4 | 2011-01-12 |  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |
+|  203 |  108 |     4 | 2011-01-12 |  203 | Brittany Harris  |  203 |  108 |     2 | 2011-01-30 |  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |
+|  203 |  108 |     2 | 2011-01-30 |  203 | Brittany Harris  |  203 |  103 |     2 | 2011-01-20 |  103 | The Sound of Music      | 1965 | Robert Wise      |
+|  203 |  108 |     2 | 2011-01-30 |  203 | Brittany Harris  |  203 |  108 |     4 | 2011-01-12 |  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |
+|  203 |  108 |     2 | 2011-01-30 |  203 | Brittany Harris  |  203 |  108 |     2 | 2011-01-30 |  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |
+|  204 |  101 |     3 | 2011-01-09 |  204 | Mike Anderson    |  204 |  101 |     3 | 2011-01-09 |  101 | Gone with the Wind      | 1939 | Victor Fleming   |
+|  205 |  103 |     3 | 2011-01-27 |  205 | Chris Jackson    |  205 |  103 |     3 | 2011-01-27 |  103 | The Sound of Music      | 1965 | Robert Wise      |
+|  205 |  103 |     3 | 2011-01-27 |  205 | Chris Jackson    |  205 |  104 |     2 | 2011-01-22 |  104 | E.T.                    | 1982 | Steven Spielberg |
+|  205 |  103 |     3 | 2011-01-27 |  205 | Chris Jackson    |  205 |  108 |     4 | NULL       |  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |
+|  205 |  104 |     2 | 2011-01-22 |  205 | Chris Jackson    |  205 |  103 |     3 | 2011-01-27 |  103 | The Sound of Music      | 1965 | Robert Wise      |
+|  205 |  104 |     2 | 2011-01-22 |  205 | Chris Jackson    |  205 |  104 |     2 | 2011-01-22 |  104 | E.T.                    | 1982 | Steven Spielberg |
+|  205 |  104 |     2 | 2011-01-22 |  205 | Chris Jackson    |  205 |  108 |     4 | NULL       |  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |
+|  205 |  108 |     4 | NULL       |  205 | Chris Jackson    |  205 |  103 |     3 | 2011-01-27 |  103 | The Sound of Music      | 1965 | Robert Wise      |
+|  205 |  108 |     4 | NULL       |  205 | Chris Jackson    |  205 |  104 |     2 | 2011-01-22 |  104 | E.T.                    | 1982 | Steven Spielberg |
+|  205 |  108 |     4 | NULL       |  205 | Chris Jackson    |  205 |  108 |     4 | NULL       |  108 | Raiders of the Lost Ark | 1981 | Steven Spielberg |
+|  206 |  107 |     3 | 2011-01-15 |  206 | Elizabeth Thomas |  206 |  106 |     5 | 2011-01-19 |  106 | Snow White              | 1937 | NULL             |
+|  206 |  107 |     3 | 2011-01-15 |  206 | Elizabeth Thomas |  206 |  107 |     3 | 2011-01-15 |  107 | Avatar                  | 2009 | James Cameron    |
+|  206 |  106 |     5 | 2011-01-19 |  206 | Elizabeth Thomas |  206 |  106 |     5 | 2011-01-19 |  106 | Snow White              | 1937 | NULL             |
+|  206 |  106 |     5 | 2011-01-19 |  206 | Elizabeth Thomas |  206 |  107 |     3 | 2011-01-15 |  107 | Avatar                  | 2009 | James Cameron    |
+|  207 |  107 |     5 | 2011-01-20 |  207 | James Cameron    |  207 |  107 |     5 | 2011-01-20 |  107 | Avatar                  | 2009 | James Cameron    |
+|  208 |  104 |     3 | 2011-01-02 |  208 | Ashley White     |  208 |  104 |     3 | 2011-01-02 |  104 | E.T.                    | 1982 | Steven Spielberg |
++------+------+-------+------------+------+------------------+------+------+-------+------------+------+-------------------------+------+------------------+
+30 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on movie.mID = rating2.mID;
++------------------+-------------------------+
+| name             | title                   |
++------------------+-------------------------+
+| Sarah Martinez   | Gone with the Wind      |
+| Sarah Martinez   | Gone with the Wind      |
+| Sarah Martinez   | Gone with the Wind      |
+| Sarah Martinez   | Gone with the Wind      |
+| Daniel Lewis     | Snow White              |
+| Brittany Harris  | The Sound of Music      |
+| Brittany Harris  | Raiders of the Lost Ark |
+| Brittany Harris  | Raiders of the Lost Ark |
+| Brittany Harris  | The Sound of Music      |
+| Brittany Harris  | Raiders of the Lost Ark |
+| Brittany Harris  | Raiders of the Lost Ark |
+| Brittany Harris  | The Sound of Music      |
+| Brittany Harris  | Raiders of the Lost Ark |
+| Brittany Harris  | Raiders of the Lost Ark |
+| Mike Anderson    | Gone with the Wind      |
+| Chris Jackson    | The Sound of Music      |
+| Chris Jackson    | E.T.                    |
+| Chris Jackson    | Raiders of the Lost Ark |
+| Chris Jackson    | The Sound of Music      |
+| Chris Jackson    | E.T.                    |
+| Chris Jackson    | Raiders of the Lost Ark |
+| Chris Jackson    | The Sound of Music      |
+| Chris Jackson    | E.T.                    |
+| Chris Jackson    | Raiders of the Lost Ark |
+| Elizabeth Thomas | Snow White              |
+| Elizabeth Thomas | Avatar                  |
+| Elizabeth Thomas | Snow White              |
+| Elizabeth Thomas | Avatar                  |
+| James Cameron    | Avatar                  |
+| Ashley White     | E.T.                    |
++------------------+-------------------------+
+30 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on movie.mID = rating2.mID where count(ratingDate)>1;
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select reviewer.name, movie.title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on movie.mID = rating2.mID having count(ratingDate)>1;
+ERROR 1052 (23000): Column 'ratingDate' in having clause is ambiguous
+mysql> select reviewer.name, movie.title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on movie.mID = rating2.mID where rating1.stars < rating2.stars;
++------------------+-------------------------+
+| name             | title                   |
++------------------+-------------------------+
+| Sarah Martinez   | Gone with the Wind      |
+| Chris Jackson    | The Sound of Music      |
+| Elizabeth Thomas | Snow White              |
+| Brittany Harris  | Raiders of the Lost Ark |
+| Brittany Harris  | Raiders of the Lost Ark |
+| Chris Jackson    | Raiders of the Lost Ark |
+| Chris Jackson    | Raiders of the Lost Ark |
++------------------+-------------------------+
+7 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on movie.mID = rating2.mID where rating1.stars < rating2.stars and rating1.ratingDate < rating2.ratingDate;
++------------------+--------------------+
+| name             | title              |
++------------------+--------------------+
+| Sarah Martinez   | Gone with the Wind |
+| Chris Jackson    | The Sound of Music |
+| Elizabeth Thomas | Snow White         |
++------------------+--------------------+
+3 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on movie.mID = rating2.mID where rating1.stars > rating2.stars and rating1.ratingDate < rating2.ratingDate;
++-----------------+-------------------------+
+| name            | title                   |
++-----------------+-------------------------+
+| Brittany Harris | The Sound of Music      |
+| Brittany Harris | Raiders of the Lost Ark |
++-----------------+-------------------------+
+2 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on movie.mID = rating2.mID where rating1.stars < rating2.stars and rating1.ratingDate < rating2.ratingDate;
++------------------+--------------------+
+| name             | title              |
++------------------+--------------------+
+| Sarah Martinez   | Gone with the Wind |
+| Chris Jackson    | The Sound of Music |
+| Elizabeth Thomas | Snow White         |
++------------------+--------------------+
+3 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on movie.mID = rating2.mID where rating1.ratingDate < rating2.ratingDate and rating1.stars < rating2.starts;
+ERROR 1054 (42S22): Unknown column 'rating2.starts' in 'where clause'
+mysql> select reviewer.name, movie.title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on movie.mID = rating2.mID where rating1.ratingDate < rating2.ratingDate and rating1.stars < rating2.stars;
++------------------+--------------------+
+| name             | title              |
++------------------+--------------------+
+| Sarah Martinez   | Gone with the Wind |
+| Chris Jackson    | The Sound of Music |
+| Elizabeth Thomas | Snow White         |
++------------------+--------------------+
+3 rows in set (0.00 sec)
+
+mysql> select reviewer.name, movie.title from rating as rating1 inner join reviewer on rating1.rID = reviewer.rID inner join rating as rating2 on rating2.rID = reviewer.rID inner join movie on movie.mID = rating2.mID where rating1.rID+rating1.mID = rating2.rID+rating2.mID AND rating1.rID+rating1.mID+rating1.stars < rating2.rID+rating2.mID+rating2.stars AND rating1.ratingDate < rating2.ratingDate;
++----------------+--------------------+
+| name           | title              |
++----------------+--------------------+
+| Sarah Martinez | Gone with the Wind |
++----------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql>

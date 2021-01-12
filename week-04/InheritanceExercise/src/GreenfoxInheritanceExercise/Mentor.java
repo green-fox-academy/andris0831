@@ -32,9 +32,7 @@ public class Mentor extends Person {
 
      @Override
     public void introduce(){
-        System.out.println(super.commonIntroduce() + level + " mentor");
+        System.out.println(super.commonIntroduce() + level + " mentor ");
     }
-
-
 }
 
