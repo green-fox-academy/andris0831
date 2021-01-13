@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Webshop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body  th:style="'background-color:' + ${selectedColor}">
+<header>
+    <a href="/useful/colored">Colored</a>
+    <a href="/useful/email">Email</a>
+    <a href="/useful/email?email=is@this.valid">validate email</a>
+</header>
+</body>
+</html>
