@@ -1,0 +1,18 @@
+.link-list {
+    color: red;
+    background-color: red;
+    text-decoration-color: gray;
+    border-radius: 6px;
+    width: 6%;
+    text-decoration: none;
+}
+
+body {
+    background-color: greenyellow;
+}
+
+img {
+    background-color: greenyellow;
+    color: greenyellow;
+}
+

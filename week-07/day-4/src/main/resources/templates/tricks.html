@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="tricks">Choose a trick: </label>
+<select name="tricks" id="tricks">
+    <option th:text="${Tricks}" th:value="${Tricks}" th:each="Tricks: ${trickList}">
+</select>
+<form action="/">
+    <button type="submit">GO</button>
+</form>
+
+</body>
+</html>

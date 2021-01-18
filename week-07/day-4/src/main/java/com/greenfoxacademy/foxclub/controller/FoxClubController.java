@@ -31,14 +31,15 @@ public class FoxClubController {
         } else {
             fox = foxServiceInterface.getFox(name);
         }
-            model.addAttribute("name", name);
+            model.addAttribute("name", fox.getName());
             model.addAttribute("food", fox.getFood());
             model.addAttribute("drink", fox.getDrink());
             return "index";
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+
         return "login";
     }
 
@@ -47,7 +48,26 @@ public class FoxClubController {
         return "redirect:/?name=" + name;
     }
 
-    //@PostMapping("/add-fox")
+    @GetMapping("/tricks")
+    public String trick(Model model) {
+        model.addAttribute("trickList", foxServiceInterface.getTrickList());
+        return "tricks";
+    }
+
+    @GetMapping("/nutrition-store")
+    public String getFood(Model model) {
+        model.addAttribute("foodList", foxServiceInterface.getFoodList());
+        model.addAttribute("drinkList", foxServiceInterface.getDrinkList());
+        return "nutrition-store";
+    }
+
+
+    //@PostMapping
+    //public String postTrick(@RequestParam String trick, Model model) {
+      //  model.addAttribute("trick", foxServiceInterface.);
+    //}
+
+   // @PostMapping("/add-fox")
     //public String addFox(@ModelAttribute Fox fox) {
       //  foxServiceInterface.addFox(fox);
         //return "redirect:/";

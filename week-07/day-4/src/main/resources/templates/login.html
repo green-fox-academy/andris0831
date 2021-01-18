@@ -15,6 +15,10 @@
     <input type="text" name="name" id="name">
     <button type="submit">GO</button>
 </form>
+<div>
+    <option th:text="${trickList}" th:value="${trickList}" th:each="tricks: ${trickList}">
+</div>
+
 
 </body>
 </html>
